@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "33088222599",
+    "project_id": "palcredits-1b837",
+    "storage_bucket": "palcredits-1b837.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33088222599:android:4e9fb659d8df463cca0f22",
+        "android_client_info": {
+          "package_name": "com.centurus.palcredits"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "33088222599-s2jg90flmrbs95qvs1a8b25urjl3hf7n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.centurus.palcredits",
+            "certificate_hash": "ba4bff2990f61a8ba4868b320d3d7cc8e7e8e073"
+          }
+        },
+        {
+          "client_id": "33088222599-kucur0dd741hm1ge67uqtu43895p4lvq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMOt5Nx0loalubFlSqMdHpyO_dUa7EmmQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "33088222599-kucur0dd741hm1ge67uqtu43895p4lvq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
