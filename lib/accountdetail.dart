@@ -1,10 +1,8 @@
-import 'package:palcredits/mainhome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
+import 'package:palcredits/mainhome.dart';
 
 import 'controller/controller.dart';
 
@@ -37,7 +35,7 @@ class _AccountDetailState extends State<AccountDetail> {
   TextEditingController idController = TextEditingController();
   TextEditingController currentadressController = TextEditingController();
   TextEditingController currentadressController1 = TextEditingController();
-  
+
   TextEditingController landmarkController = TextEditingController();
   TextEditingController stateController = TextEditingController();
   TextEditingController pincodeController = TextEditingController();
@@ -55,7 +53,7 @@ class _AccountDetailState extends State<AccountDetail> {
   TextEditingController mortagepaymentController = TextEditingController();
 
   String area = '';
-  String name='';
+  String name = '';
   Future getadmindata(String id) async {
     await FirebaseFirestore.instance
         .collection('agents')
@@ -81,7 +79,8 @@ class _AccountDetailState extends State<AccountDetail> {
       'lead_id': '',
       'application_status': 'Pending',
       'first_name': ("${firstnameController.text} ${lastnameController.text}"),
-      'last_name': "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}",
+      'last_name':
+          "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}",
       'Date_of_birth': dobController.text,
       'mother_name': mothernameController.text,
       'email': emailController.text,
@@ -90,7 +89,7 @@ class _AccountDetailState extends State<AccountDetail> {
       'current_adress':
           ("${currentadressController.text},${currentadressController1.text}"),
       'landmark': landmarkController.text,
-      'state':stateController.text,
+      'state': stateController.text,
       'companyname': companynameController.text,
       'work_place': officeController.text,
       'pin_code': pincodeController.text,
@@ -114,6 +113,7 @@ class _AccountDetailState extends State<AccountDetail> {
   final List<String> items1 = [
     'Salaried',
     'Self Employed',
+    'Student',
     'Other',
   ];
 
@@ -161,677 +161,727 @@ class _AccountDetailState extends State<AccountDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 8, 71, 123),
-          title: const Text(
-            'Credit Card application form',
-            style: TextStyle(
-                fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
-          ),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: const Text(
+          'Credit Card application form',
+          style: TextStyle(
+              fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
         ),
-        body: ListView(children: [
-          const SizedBox(
-            height: 25,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, bottom: 20),
-            child: Text(
-              'Personal Informations',
-              style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black.withOpacity(0.9)),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 25),
-            child: Row(
-              children: [
-                Text(
-                  "Title",
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black.withOpacity(0.4)),
-                ),
-                const Text(
-                  '*',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.red),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 40,
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 120,
-                  height: 35,
-                  child: RadioListTile(
-                    title: const Text("Mr."),
-                    value: "Mr.",
-                    groupValue: gender,
-                    onChanged: (value) {
-                      setState(() {
-                        gender = value.toString();
-                      });
-                    },
+      ),
+      body: Column(
+        children: [
+          SingleChildScrollView(
+            physics: ScrollPhysics(),
+            child: Container(
+              height: MediaQuery.of(context).size.height - 176,
+              child: ListView(
+                children: [
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
-                SizedBox(
-                  width: 120,
-                  height: 35,
-                  child: RadioListTile(
-                    title: const Text("Mrs."),
-                    value: "Mrs.",
-                    groupValue: gender,
-                    onChanged: (value) {
-                      setState(() {
-                        gender = value.toString();
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 25, bottom: 15),
-            child: Row(
-              children: [
-                Text(
-                  "Name",
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black.withOpacity(0.4)),
-                ),
-                const Text(
-                  '*',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.red),
-                ),
-              ],
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 30),
-                child: Container(
-                  height: 40,
-                  width: 140,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: const Color.fromARGB(255, 102, 100, 100)
-                                .withOpacity(0.2),
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 15, bottom: 6),
-                    child: TextField(
-                      controller: firstnameController,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "First name",
-                        hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, bottom: 20),
+                    child: Text(
+                      'Personal Informations',
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black.withOpacity(0.9)),
                     ),
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 35),
-                child: Container(
-                  height: 40,
-                  width: 140,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: const Color.fromARGB(255, 102, 100, 100)
-                                .withOpacity(0.2),
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 15, bottom: 6),
-                    child: TextField(
-                      controller: lastnameController,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "last name",
-                        hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 29),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Title",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.blue),
+                        ),
+                        const Text(
+                          '*',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.red),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 25),
-            child: Row(
-              children: [
-                Text(
-                  "Marital Status",
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black.withOpacity(0.4)),
-                ),
-                const Text(
-                  '*',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.red),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 40,
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 150,
-                  height: 35,
-                  child: RadioListTile(
-                    title: const Text("Married"),
-                    value: "Married",
-                    groupValue: gender1,
-                    onChanged: (value) {
-                      setState(() {
-                        gender1 = value.toString();
-                      });
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: 170,
-                  height: 35,
-                  child: RadioListTile(
-                    title: const Text("Unmarried"),
-                    value: "Unmarried",
-                    groupValue: gender1,
-                    onChanged: (value) {
-                      setState(() {
-                        gender1 = value.toString();
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          //info('Date Of Birth', 'Enter', dobController),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Pick DOB',
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black.withOpacity(0.4)),
-                      ),
-                      const Text(
-                        '*',
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.red),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Container(
+                  SizedBox(
                     height: 40,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                              color: const Color.fromARGB(255, 102, 100, 100)
-                                  .withOpacity(0.2),
-                              spreadRadius: 1,
-                              blurRadius: 1)
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15, bottom: 6),
-                      child: TextField(
-                        onTap: () {
-                          _selectDate(context);
-                        },
-                        controller: dobController,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Select Dob',
-                          hintStyle:
-                              const TextStyle(color: Colors.grey, fontSize: 14),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 150,
+                          height: 35,
+                          child: RadioListTile(
+                            title: Text("Mr.",
+                                style: TextStyle(color: Colors.grey.shade700)),
+                            value: "Mr.",
+                            groupValue: gender,
+                            onChanged: (value) {
+                              setState(() {
+                                gender = value.toString();
+                              });
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          width: 170,
+                          height: 35,
+                          child: RadioListTile(
+                            title: Text(
+                              "Mrs.",
+                              style: TextStyle(color: Colors.grey.shade700),
+                            ),
+                            value: "Mrs.",
+                            groupValue: gender,
+                            onChanged: (value) {
+                              setState(() {
+                                gender = value.toString();
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, bottom: 15),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Name",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.blue),
+                        ),
+                        const Text(
+                          '*',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.red),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 26),
+                        child: Container(
+                          height: 35,
+                          width: 140,
+                          // decoration: BoxDecoration(
+                          //     borderRadius: BorderRadius.circular(5),
+                          //     color: Colors.white,
+                          //     boxShadow: [
+                          //       BoxShadow(
+                          //           color: const Color.fromARGB(255, 102, 100, 100)
+                          //               .withOpacity(0.2),
+                          //           spreadRadius: 1,
+                          //           blurRadius: 1)
+                          //     ]),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 15, bottom: 6),
+                            child: TextField(
+                              controller: firstnameController,
+                              decoration: const InputDecoration(
+                                // border: InputBorder.none,
+                                hintText: "First name",
+                                hintStyle:
+                                    TextStyle(color: Colors.grey, fontSize: 14),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          info(
-              'Mother Name',
-              'Enter',
-              mothernameController,
-              TextInputType.emailAddress,
-              [LengthLimitingTextInputFormatter(30)]),
-          info('Email', 'Enter', emailController, TextInputType.emailAddress,
-              [LengthLimitingTextInputFormatter(30)]),
-          info('Mobile Number', 'Enter number', mobilenumberController,
-              TextInputType.number, [LengthLimitingTextInputFormatter(10)]),
-
-          info('Pan Number', 'Enter', idController, TextInputType.emailAddress,
-              [LengthLimitingTextInputFormatter(30)]),
-          info('Pin Code', 'Enter', pincodeController, TextInputType.number,
-              [LengthLimitingTextInputFormatter(6)]),
-          info(
-              'House and Street Number',
-              'Enter no.',
-              currentadressController,
-              TextInputType.emailAddress,
-              [LengthLimitingTextInputFormatter(50)]),
-
-          info(
-              'Landmark',
-              'Enter',
-              landmarkController,
-              TextInputType.emailAddress,
-              [LengthLimitingTextInputFormatter(30)]),
-          info(
-              'City Name',
-              'Enter no.',
-              currentadressController1,
-              TextInputType.emailAddress,
-              [LengthLimitingTextInputFormatter(30)]),
-
-          const SizedBox(
-            height: 16,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 30),
-                child: Container(
-                  height: 40,
-                  width: 140,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: const Color.fromARGB(255, 102, 100, 100)
-                                .withOpacity(0.2),
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 15, bottom: 6),
-                    child: TextField(
-                      controller: stateController,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "State",
-                        hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 35),
-                child: Container(
-                  height: 40,
-                  width: 140,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: const Color.fromARGB(255, 102, 100, 100)
-                                .withOpacity(0.2),
-                            spreadRadius: 1,
-                            blurRadius: 1)
-                      ]),
-                  child: const Padding(
-                    padding: EdgeInsets.only(left: 15, bottom: 6),
-                    child: TextField(
-                      //controller: placeofbirthController,
-
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Country",
-                        hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, bottom: 20),
-            child: Text(
-              'Financial Informations',
-              style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black.withOpacity(0.9)),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 25),
-            child: Row(
-              children: [
-                Text(
-                  "Are You a",
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black.withOpacity(0.4)),
-                ),
-                const Text(
-                  '*',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.red),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 35),
-            child: Container(
-              height: 40,
-              width: 300,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                        color: const Color.fromARGB(255, 102, 100, 100)
-                            .withOpacity(0.2),
-                        spreadRadius: 1,
-                        blurRadius: 1)
-                  ]),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton2(
-                    hint: Text(
-                      'Select source of income',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey.withOpacity(0.8),
-                      ),
-                    ),
-                    items: items1
-                        .map((item) => DropdownMenuItem<String>(
-                              value: item,
-                              child: Text(
-                                item,
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 35),
+                        child: Container(
+                          height: 35,
+                          width: 140,
+                          // decoration: BoxDecoration(
+                          //     borderRadius: BorderRadius.circular(5),
+                          //     color: Colors.white,
+                          //     boxShadow: [
+                          //       BoxShadow(
+                          //           color: const Color.fromARGB(255, 102, 100, 100)
+                          //               .withOpacity(0.2),
+                          //           spreadRadius: 1,
+                          //           blurRadius: 1)
+                          //     ]),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 15, bottom: 6),
+                            child: TextField(
+                              controller: lastnameController,
+                              decoration: const InputDecoration(
+                                // border: InputBorder.none,
+                                hintText: "last name",
+                                hintStyle:
+                                    TextStyle(color: Colors.grey, fontSize: 14),
                               ),
-                            ))
-                        .toList(),
-                    value: selectedValue1,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedValue1 = value as String;
-                      });
-                    },
-                  ),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-
-          info(
-              'Company Name',
-              'Enter',
-              companynameController,
-              TextInputType.emailAddress,
-              [LengthLimitingTextInputFormatter(30)]),
-          info(
-              'Designation',
-              'Enter',
-              designationController,
-              TextInputType.emailAddress,
-              [LengthLimitingTextInputFormatter(30)]),
-          info(
-              'Office Adress',
-              'Enter',
-              officeController,
-              TextInputType.emailAddress,
-              [LengthLimitingTextInputFormatter(50)]),
-
-          Padding(
-            padding: const EdgeInsets.only(left: 25),
-            child: Row(
-              children: [
-                Text(
-                  "Existing card holder",
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black.withOpacity(0.4)),
-                ),
-                const Text(
-                  '*',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.red),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 40,
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 130,
-                  height: 35,
-                  child: RadioListTile(
-                    title: const Text("Yes"),
-                    value: "Yes",
-                    groupValue: gender1,
-                    onChanged: (value) {
-                      setState(() {
-                        gender1 = value.toString();
-                        hascard = true;
-                      });
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: 130,
-                  height: 35,
-                  child: RadioListTile(
-                    title: const Text("No"),
-                    value: "No",
-                    groupValue: gender1,
-                    onChanged: (value) {
-                      setState(() {
-                        gender1 = value.toString();
-                        hascard = false;
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          hascard
-              ? info(
-                  'Existing card Bank Name',
-                  'Enter',
-                  existingbankController,
-                  TextInputType.emailAddress,
-                  [LengthLimitingTextInputFormatter(30)])
-              : selectedValue1 == 'Self Employed'
-                  ? info(
-                      'Gross Income',
-                      'Enter',
-                      grossmonthlyincomeController,
-                      TextInputType.emailAddress,
-                      [LengthLimitingTextInputFormatter(30)])
-                  : info(
-                      'Net Monthly Income',
-                      'Enter',
-                      grossmonthlyincomeController,
-                      TextInputType.emailAddress,
-                      [LengthLimitingTextInputFormatter(30)]),
-          hascard
-              ? info(
-                  'Existing card limit',
-                  'Enter',
-                  existinglimitController,
-                  TextInputType.emailAddress,
-                  [LengthLimitingTextInputFormatter(30)])
-              : info(
-                  'Yearly Return Detail',
-                  'Enter',
-                  yearlyreturndetailsController,
-                  TextInputType.emailAddress,
-                  [LengthLimitingTextInputFormatter(30)]),
-          hascard
-              ? info(
-                  'Existing card vintage',
-                  'Enter',
-                  existingvintageController,
-                  TextInputType.emailAddress,
-                  [LengthLimitingTextInputFormatter(30)])
-              : selectedValue1 == 'Self Employed'
-                  ? const SizedBox(
-                      height: 1,
-                      width: 1,
-                    )
-                  : info(
-                      'Salary slip',
-                      'Enter',
-                      existingvintageController,
-                      TextInputType.emailAddress,
-                      [LengthLimitingTextInputFormatter(30)]),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 25),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(22),
-                gradient: const LinearGradient(
-                    colors: [Colors.blue, Color.fromARGB(255, 8, 71, 123)],
-                    begin: Alignment.bottomLeft,
-                    end: Alignment.topRight),
-              ),
-              child: MaterialButton(
-                onPressed: () {
-                  if (firstnameController.text.isNotEmpty &&
-                      dobController.text.isNotEmpty &&
-                      mothernameController.text.isNotEmpty &&
-                      emailController.text.isNotEmpty &&
-                      mobilenumberController.text.isNotEmpty &&
-                      idController.text.isNotEmpty &&
-                      currentadressController.text.isNotEmpty &&
-                      landmarkController.text.isNotEmpty &&
-                      companynameController.text.isNotEmpty &&
-                      designationController.text.isNotEmpty &&
-                      idController.text.isNotEmpty) {
-                    getadmindata(localtoken);
-                    dialog(context);
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: const Text('Please fill all mandatory fields'),
-                        backgroundColor: Colors.red,
-                        behavior: SnackBarBehavior.floating,
-                        margin: const EdgeInsets.all(10),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
-                    );
-                  }
-                },
-                //color: Colors.blue,
-                height: 30,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7)),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        'Submit',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 31),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Marital Status",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.blue),
+                        ),
+                        const Text(
+                          '*',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.red),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 150,
+                          height: 35,
+                          child: RadioListTile(
+                            title: Text("Married",
+                                style: TextStyle(color: Colors.grey.shade700)),
+                            value: "Married",
+                            groupValue: gender1,
+                            onChanged: (value) {
+                              setState(() {
+                                gender1 = value.toString();
+                              });
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          width: 170,
+                          height: 35,
+                          child: RadioListTile(
+                            title: Text("Unmarried",
+                                style: TextStyle(color: Colors.grey.shade700)),
+                            value: "Unmarried",
+                            groupValue: gender1,
+                            onChanged: (value) {
+                              setState(() {
+                                gender1 = value.toString();
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  //info('Date Of Birth', 'Enter', dobController),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 28),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Pick DOB',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.blue),
+                              ),
+                              const Text(
+                                '*',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.red),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15, bottom: 20),
+                          child: TextField(
+                            controller: dobController,
+                            decoration: InputDecoration(
+                              suffixIcon: IconButton(
+                                icon: Icon(Icons.calendar_month),
+                                onPressed: () {
+                                  _selectDate(context);
+                                },
+                              ),
+                              hintText: '--/--/--',
+                              labelText: 'Select Dob',
+                              hintStyle: const TextStyle(
+                                  color: Colors.grey, fontSize: 14),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  info(
+                      'Mother Name',
+                      'Enter',
+                      mothernameController,
+                      TextInputType.emailAddress,
+                      [LengthLimitingTextInputFormatter(30)]),
+                  info(
+                      'Email',
+                      'Enter',
+                      emailController,
+                      TextInputType.emailAddress,
+                      [LengthLimitingTextInputFormatter(30)]),
+                  info(
+                      'Mobile Number',
+                      'Enter number',
+                      mobilenumberController,
+                      TextInputType.number,
+                      [LengthLimitingTextInputFormatter(10)]),
+
+                  info(
+                      'Pan Number',
+                      'Enter',
+                      idController,
+                      TextInputType.emailAddress,
+                      [LengthLimitingTextInputFormatter(30)]),
+                  info(
+                      'Pin Code',
+                      'Enter',
+                      pincodeController,
+                      TextInputType.number,
+                      [LengthLimitingTextInputFormatter(6)]),
+                  info(
+                      'House and Street Number',
+                      'Enter no.',
+                      currentadressController,
+                      TextInputType.emailAddress,
+                      [LengthLimitingTextInputFormatter(50)]),
+
+                  info(
+                      'Landmark',
+                      'Enter',
+                      landmarkController,
+                      TextInputType.emailAddress,
+                      [LengthLimitingTextInputFormatter(30)]),
+                  info(
+                      'City Name',
+                      'Enter no.',
+                      currentadressController1,
+                      TextInputType.emailAddress,
+                      [LengthLimitingTextInputFormatter(30)]),
+
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 38),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Location",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.blue),
+                            ),
+                            const Text(
+                              '*',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.red),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 30),
+                            child: Container(
+                              height: 60,
+                              width: 140,
+                              // decoration: BoxDecoration(
+                              //     borderRadius: BorderRadius.circular(5),
+                              //     color: Colors.white,
+                              //     boxShadow: [
+                              //       BoxShadow(
+                              //           color: const Color.fromARGB(255, 102, 100, 100)
+                              //               .withOpacity(0.2),
+                              //           spreadRadius: 1,
+                              //           blurRadius: 1)
+                              //     ]),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 15, bottom: 10),
+                                child: TextField(
+                                  controller: stateController,
+                                  decoration: const InputDecoration(
+                                    // border: InputBorder.none,
+                                    labelText: "State",
+                                    hintStyle: TextStyle(
+                                        color: Colors.grey, fontSize: 14),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 35),
+                            child: Container(
+                              height: 60,
+                              width: 140,
+                              // decoration: BoxDecoration(
+                              //     borderRadius: BorderRadius.circular(5),
+                              //     color: Colors.white,
+                              //     boxShadow: [
+                              //       BoxShadow(
+                              //           color: const Color.fromARGB(255, 102, 100, 100)
+                              //               .withOpacity(0.2),
+                              //           spreadRadius: 1,
+                              //           blurRadius: 1)
+                              //     ]),
+                              child: const Padding(
+                                padding: EdgeInsets.only(left: 15, bottom: 10),
+                                child: TextField(
+                                  //controller: placeofbirthController,
+
+                                  decoration: InputDecoration(
+                                    // border: InputBorder.none,
+                                    labelText: "Country",
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, bottom: 20),
+                    child: Text(
+                      'Financial Informations',
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black.withOpacity(0.9)),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Are You a",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.blue),
+                        ),
+                        const Text(
+                          '*',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.red),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 35),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 9),
+                      child: DropdownButtonFormField<String>(
+                        decoration: InputDecoration(
+                          hintText:
+                              'Source of income', // You can change this label as needed
+                          labelStyle: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey.withOpacity(0.8),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors
+                                    .grey), // Customize the color as needed
+                          ),
+                        ),
+                        items: items1
+                            .map((item) => DropdownMenuItem<String>(
+                                  value: item,
+                                  child: Text(
+                                    item,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ))
+                            .toList(),
+                        value: selectedValue1,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedValue1 = value!;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+
+                  info(
+                      'Company Name',
+                      'Enter',
+                      companynameController,
+                      TextInputType.emailAddress,
+                      [LengthLimitingTextInputFormatter(30)]),
+                  info(
+                      'Designation',
+                      'Enter',
+                      designationController,
+                      TextInputType.emailAddress,
+                      [LengthLimitingTextInputFormatter(30)]),
+                  info(
+                      'Office Adress',
+                      'Enter',
+                      officeController,
+                      TextInputType.emailAddress,
+                      [LengthLimitingTextInputFormatter(50)]),
+
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, bottom: 5),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Existing card holder",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ),
+                        const Text(
+                          '',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.red),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 150,
+                          height: 35,
+                          child: RadioListTile(
+                            title: Text("Yes",
+                                style: TextStyle(color: Colors.grey.shade700)),
+                            value: "Yes",
+                            groupValue: gender1,
+                            onChanged: (value) {
+                              setState(() {
+                                gender1 = value.toString();
+                                hascard = true;
+                              });
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          width: 170,
+                          height: 35,
+                          child: RadioListTile(
+                            title: Text(
+                              "No",
+                              style: TextStyle(color: Colors.grey.shade700),
+                            ),
+                            value: "No",
+                            groupValue: gender1,
+                            onChanged: (value) {
+                              setState(() {
+                                gender1 = value.toString();
+                                hascard = false;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  hascard
+                      ? info(
+                          'Existing card Bank Name',
+                          'Enter',
+                          existingbankController,
+                          TextInputType.emailAddress,
+                          [LengthLimitingTextInputFormatter(30)])
+                      : selectedValue1 == 'Self Employed'
+                          ? info(
+                              'Gross Income',
+                              'Enter',
+                              grossmonthlyincomeController,
+                              TextInputType.emailAddress,
+                              [LengthLimitingTextInputFormatter(30)])
+                          : info(
+                              'Net Monthly Income',
+                              'Enter',
+                              grossmonthlyincomeController,
+                              TextInputType.emailAddress,
+                              [LengthLimitingTextInputFormatter(30)]),
+                  hascard
+                      ? info(
+                          'Existing card limit',
+                          'Enter',
+                          existinglimitController,
+                          TextInputType.emailAddress,
+                          [LengthLimitingTextInputFormatter(30)])
+                      : info(
+                          'Yearly Return Detail',
+                          'Enter',
+                          yearlyreturndetailsController,
+                          TextInputType.emailAddress,
+                          [LengthLimitingTextInputFormatter(30)]),
+                  hascard
+                      ? info(
+                          'Existing card vintage',
+                          'Enter',
+                          existingvintageController,
+                          TextInputType.emailAddress,
+                          [LengthLimitingTextInputFormatter(30)])
+                      : selectedValue1 == 'Self Employed'
+                          ? const SizedBox(
+                              height: 1,
+                              width: 1,
+                            )
+                          : info(
+                              'Salary slip',
+                              'Enter',
+                              existingvintageController,
+                              TextInputType.emailAddress,
+                              [
+                                LengthLimitingTextInputFormatter(30),
+                              ],
+                            ),
+                ],
               ),
             ),
           ),
-        ]));
+        ],
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+        child: Container(
+          height: 40,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(22),
+            gradient: const LinearGradient(
+                colors: [Colors.blue, Color.fromARGB(255, 8, 71, 123)],
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight),
+          ),
+          child: MaterialButton(
+            onPressed: () {
+              if (firstnameController.text.isNotEmpty &&
+                  dobController.text.isNotEmpty &&
+                  mothernameController.text.isNotEmpty &&
+                  emailController.text.isNotEmpty &&
+                  mobilenumberController.text.isNotEmpty &&
+                  idController.text.isNotEmpty &&
+                  currentadressController.text.isNotEmpty &&
+                  landmarkController.text.isNotEmpty &&
+                  companynameController.text.isNotEmpty &&
+                  designationController.text.isNotEmpty &&
+                  idController.text.isNotEmpty) {
+                getadmindata(localtoken);
+                dialog(context);
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: const Text('Please fill all mandatory fields'),
+                    backgroundColor: Colors.red,
+                    behavior: SnackBarBehavior.floating,
+                    margin: const EdgeInsets.only(
+                        bottom: 610, left: 10, right: 10, top: 5),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                );
+              }
+            },
+            //color: Colors.blue,
+
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text(
+                    'Submit',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   dialog(BuildContext context) {
@@ -873,9 +923,6 @@ class _AccountDetailState extends State<AccountDetail> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
                 SizedBox(
                   width: 250,
                   child: MaterialButton(
@@ -906,7 +953,7 @@ class _AccountDetailState extends State<AccountDetail> {
 
   info(name, name1, control, type, length) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      padding: const EdgeInsets.symmetric(horizontal: 29),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -920,7 +967,7 @@ class _AccountDetailState extends State<AccountDetail> {
                   style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
-                      color: Colors.black.withOpacity(0.4)),
+                      color: Colors.blue),
                 ),
                 const Text(
                   '*',
@@ -933,36 +980,17 @@ class _AccountDetailState extends State<AccountDetail> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Container(
-              height: 40,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                        color: const Color.fromARGB(255, 102, 100, 100)
-                            .withOpacity(0.2),
-                        spreadRadius: 1,
-                        blurRadius: 1)
-                  ]),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 15, bottom: 6),
-                child: TextField(
-                  controller: control,
-                  keyboardType: type,
-                  //maxLength: length,
-                  expands: false,
-                  //maxLengthEnforcement: false,
-                  inputFormatters: length,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: name1,
-                    hintStyle: TextStyle(
-                        color: Colors.grey.withOpacity(0.7), fontSize: 14),
-                  ),
-                ),
+            padding: const EdgeInsets.only(left: 15, bottom: 20),
+            child: TextField(
+              controller: control,
+              keyboardType: type,
+              //maxLength: length,
+              expands: false,
+              //maxLengthEnforcement: false,
+
+              decoration: InputDecoration(
+                hintText: name1,
+                hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
               ),
             ),
           ),

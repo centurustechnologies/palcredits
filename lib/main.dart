@@ -35,15 +35,20 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Pal Credits',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: //VoiceCallScreen()//Pdf()
-            const PhoneLogin(
-          ids: '',
-        ));
+      title: 'Pal Credits',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const PhoneLogin(
+        ids: '',
+      ),
+      // AccountDetail(
+      //   bankname: '',
+      //   cardtype: '',
+      // ),
+      //VoiceCallScreen()//Pdf()
+    );
   }
 
   String phoneid = '';

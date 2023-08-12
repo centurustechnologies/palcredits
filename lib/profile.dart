@@ -333,30 +333,81 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                         const SizedBox(
                                                           height: 20,
                                                         ),
-                                                        Text(
-                                                          'Welcome',
-                                                          style: TextStyle(
-                                                              fontSize: 15,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              color: Colors
-                                                                  .black
-                                                                  .withOpacity(
-                                                                      0.6)),
-                                                        ),
-                                                        const SizedBox(
-                                                          height: 5,
-                                                        ),
-                                                        Text(
-                                                          'A.g.financial services',
-                                                          style: TextStyle(
-                                                              fontSize: 17,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              color:
-                                                                  Colors.black),
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Text(
+                                                                  'Welcome',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          15,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      color: Colors
+                                                                          .black
+                                                                          .withOpacity(
+                                                                              0.6)),
+                                                                ),
+                                                                const SizedBox(
+                                                                  height: 5,
+                                                                ),
+                                                                Text(
+                                                                  'A.g.financial services',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          17,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      color: Colors
+                                                                          .black),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Text(
+                                                                  'Date',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          15,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      color: Colors
+                                                                          .black
+                                                                          .withOpacity(
+                                                                              0.6)),
+                                                                ),
+                                                                const SizedBox(
+                                                                  height: 5,
+                                                                ),
+                                                                Text(
+                                                                  documentSnapshot[
+                                                                      'date'],
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          17,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      color: Colors
+                                                                          .black),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
                                                         ),
                                                         const SizedBox(
                                                           height: 40,
@@ -473,113 +524,88 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                         const SizedBox(
                                                           height: 40,
                                                         ),
-                                                        Text(
-                                                          'Date',
-                                                          style: TextStyle(
-                                                              fontSize: 15,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              color: Colors
-                                                                  .black
-                                                                  .withOpacity(
-                                                                      0.6)),
-                                                        ),
-                                                        const SizedBox(
-                                                          height: 5,
-                                                        ),
-                                                        Text(
-                                                          documentSnapshot[
-                                                              'date'],
-                                                          style: TextStyle(
-                                                              fontSize: 17,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              color:
-                                                                  Colors.black),
-                                                        ),
+
                                                         //Spacer(),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .symmetric(
-                                                                  horizontal: 0,
-                                                                  vertical: 20),
-                                                          child: Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          12),
-                                                              gradient: const LinearGradient(
-                                                                  colors: [
-                                                                    Colors.blue,
-                                                                    Color
-                                                                        .fromARGB(
-                                                                            255,
-                                                                            8,
-                                                                            71,
-                                                                            123)
-                                                                  ],
-                                                                  begin: Alignment
-                                                                      .bottomLeft,
-                                                                  end: Alignment
-                                                                      .topRight),
-                                                            ),
-                                                            child:
-                                                                MaterialButton(
-                                                              onPressed: () {
-                                                                updateattendance(
-                                                                    documentSnapshot
-                                                                        .id);
-                                                                storage.delete(
-                                                                    key:
-                                                                        'token');
-                                                                Navigator.push(
-                                                                  context,
-                                                                  MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            MyApp(),
-                                                                  ),
-                                                                );
-                                                              },
-                                                              height: 30,
-                                                              shape: RoundedRectangleBorder(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              7)),
-                                                              child: Padding(
-                                                                padding: const EdgeInsets
-                                                                        .symmetric(
-                                                                    horizontal:
-                                                                        30,
-                                                                    vertical:
-                                                                        5),
-                                                                child: Row(
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .center,
-                                                                  children: const [
-                                                                    Text(
-                                                                      'Click here to Check Out',
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                              14,
-                                                                          fontWeight: FontWeight
-                                                                              .w500,
-                                                                          color:
-                                                                              Colors.white),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
+                                                        // Padding(
+                                                        //   padding:
+                                                        //       const EdgeInsets
+                                                        //               .symmetric(
+                                                        //           horizontal: 0,
+                                                        //           vertical: 20),
+                                                        //   child: Container(
+                                                        //     decoration:
+                                                        //         BoxDecoration(
+                                                        //       borderRadius:
+                                                        //           BorderRadius
+                                                        //               .circular(
+                                                        //                   12),
+                                                        //       gradient: const LinearGradient(
+                                                        //           colors: [
+                                                        //             Colors.blue,
+                                                        //             Color
+                                                        //                 .fromARGB(
+                                                        //                     255,
+                                                        //                     8,
+                                                        //                     71,
+                                                        //                     123)
+                                                        //           ],
+                                                        //           begin: Alignment
+                                                        //               .bottomLeft,
+                                                        //           end: Alignment
+                                                        //               .topRight),
+                                                        //     ),
+                                                        //     child:
+                                                        //         MaterialButton(
+                                                        //       onPressed: () {
+                                                        //         updateattendance(
+                                                        //             documentSnapshot
+                                                        //                 .id);
+                                                        //         storage.delete(
+                                                        //             key:
+                                                        //                 'token');
+                                                        //         Navigator.push(
+                                                        //           context,
+                                                        //           MaterialPageRoute(
+                                                        //             builder:
+                                                        //                 (context) =>
+                                                        //                     MyApp(),
+                                                        //           ),
+                                                        //         );
+                                                        //       },
+                                                        //       height: 30,
+                                                        //       shape: RoundedRectangleBorder(
+                                                        //           borderRadius:
+                                                        //               BorderRadius
+                                                        //                   .circular(
+                                                        //                       7)),
+                                                        //       child: Padding(
+                                                        //         padding: const EdgeInsets
+                                                        //                 .symmetric(
+                                                        //             horizontal:
+                                                        //                 30,
+                                                        //             vertical:
+                                                        //                 5),
+                                                        //         child: Row(
+                                                        //           mainAxisAlignment:
+                                                        //               MainAxisAlignment
+                                                        //                   .center,
+                                                        //           children: const [
+                                                        //             Text(
+                                                        //               'Click here to Check Out',
+                                                        //               style: TextStyle(
+                                                        //                   fontSize:
+                                                        //                       14,
+                                                        //                   fontWeight: FontWeight
+                                                        //                       .w500,
+                                                        //                   color:
+                                                        //                       Colors.white),
+                                                        //             ),
+                                                        //           ],
+                                                        //         ),
+                                                        //       ),
+                                                        //     ),
+                                                        //   ),
+                                                        // ),
                                                       ],
                                                     ),
                                                   ),
