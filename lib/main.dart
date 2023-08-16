@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:palcredits/login.dart';
 import 'package:palcredits/phonelogin.dart';
+import 'package:palcredits/visiting_card.dart';
 
 import 'controller/controller.dart';
 // import 'dart:async'show Future;
@@ -40,9 +41,10 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const PhoneLogin(
-        ids: '',
-      ),
+      home: VisitingCard(),
+      // const PhoneLogin(
+      //   ids: '',
+      // ),
       // AccountDetail(
       //   bankname: '',
       //   cardtype: '',
