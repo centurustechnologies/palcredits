@@ -91,7 +91,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
       'date':
           "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}",
       'location': Address,
-      'status':'Present'
+      'status': 'Present'
     });
   }
 
@@ -174,41 +174,35 @@ class _PhoneLoginState extends State<PhoneLogin> {
         .collection('agents')
         .doc(passwordcontroller.text)
         .get()
-        .then((value) async{
+        .then((value) async {
       if (value.exists) {
         setState(() {
           phoneid = value.get('mobile_id');
         });
-          if (phoneid == yourid) {
-                                  updateid();
-                                  dialog(context);
-                                  Position position =
-                                      await _getGeoLocationPosition();
-                                  location =
-                                      'Lat: ${position.latitude} , Long: ${position.longitude}';
-                                  GetAddressFromLatLong(position);
-                                }else if(phoneid==''){
-                                    updateid();
-                                  dialog(context);
-                                  Position position =
-                                      await _getGeoLocationPosition();
-                                  location =
-                                      'Lat: ${position.latitude} , Long: ${position.longitude}';
-                                  GetAddressFromLatLong(position);
-                                }else{
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: const Text(
-                                        'Already registered from another device'),
-                                    backgroundColor: Colors.red,
-                                    behavior: SnackBarBehavior.floating,
-                                    margin: const EdgeInsets.all(10),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                  ),
-                                );  
-                                }
+        if (phoneid == yourid) {
+          updateid();
+          dialog(context);
+          Position position = await _getGeoLocationPosition();
+          location = 'Lat: ${position.latitude} , Long: ${position.longitude}';
+          GetAddressFromLatLong(position);
+        } else if (phoneid == '') {
+          updateid();
+          dialog(context);
+          Position position = await _getGeoLocationPosition();
+          location = 'Lat: ${position.latitude} , Long: ${position.longitude}';
+          GetAddressFromLatLong(position);
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: const Text('Already registered from another device'),
+              backgroundColor: Colors.red,
+              behavior: SnackBarBehavior.floating,
+              margin: const EdgeInsets.all(10),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+            ),
+          );
+        }
       }
     });
   }
@@ -397,7 +391,6 @@ class _PhoneLoginState extends State<PhoneLogin> {
                               if (useridcontroller.text.isNotEmpty &&
                                   passwordcontroller.text.isNotEmpty) {
                                 getadmindata();
-                              
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

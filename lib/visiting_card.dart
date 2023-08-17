@@ -11,6 +11,7 @@ class _VisitingCardState extends State<VisitingCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.grey.shade200,
         leading: IconButton(
@@ -31,12 +32,17 @@ class _VisitingCardState extends State<VisitingCard> {
         child: Column(
           children: [
             SizedBox(
-              height: 60,
+              height: 30,
             ),
             Container(
               height: 200,
               width: 400,
               decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                      'assets/pic3.png'), // Replace with your image path
+                  fit: BoxFit.fitWidth,
+                ),
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
@@ -52,16 +58,53 @@ class _VisitingCardState extends State<VisitingCard> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(right: 15),
+                    padding: const EdgeInsets.only(
+                      right: 40,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(
-                            'https://example.com/profile_image.jpg', // Replace with your image URL
-                          ),
-                          radius: 30,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              width: 75,
+                              height: 80,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage('assets/logo2.jpg'),
+                                    fit: BoxFit
+                                        .cover // Replace with your image asset
+                                    ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(50),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "PAL",
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.blue.shade800,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 4,
+                            ),
+                            Text(
+                              "CREDITS",
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.red,
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -69,12 +112,13 @@ class _VisitingCardState extends State<VisitingCard> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(15),
+                        padding: const EdgeInsets.only(
+                            right: 39, left: 40, bottom: 10),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'John Doe',
+                                'Ankit Kumar',
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
@@ -106,14 +150,14 @@ class _VisitingCardState extends State<VisitingCard> {
                                         width: 2,
                                       ),
                                       Text(
-                                        'johndoe@example.com',
+                                        'ankit.ankit.0x@gmail.com',
                                         style: TextStyle(fontSize: 11),
                                       ),
                                     ],
                                   ),
                                   SizedBox(
                                     height: 3,
-                                    width: 20,
+                                    width: 15,
                                   ),
                                   Row(
                                     mainAxisAlignment:
@@ -128,7 +172,7 @@ class _VisitingCardState extends State<VisitingCard> {
                                         width: 2,
                                       ),
                                       Text(
-                                        '+91 12345 67890',
+                                        '+91 82641 04734',
                                         style: TextStyle(fontSize: 11),
                                       ),
                                     ],
@@ -141,19 +185,19 @@ class _VisitingCardState extends State<VisitingCard> {
                         height: 35,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: Colors.blue.shade600,
                           borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(10),
                               bottomRight: Radius.circular(10)),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(7),
+                          padding: const EdgeInsets.all(10),
                           child: Column(
                             children: [
                               Text(
-                                "App & Webpage Developement Company",
+                                "Offering Loans, Credits Cards And All Financial Products Digitally",
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 11,
                                   color: Colors.white,
                                 ),
                               ),
@@ -162,6 +206,131 @@ class _VisitingCardState extends State<VisitingCard> {
                         ),
                       ),
                     ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      height: 40,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        color: Colors.green.shade500,
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 3,
+                            blurRadius: 10,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 26,
+                            width: 26,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color:
+                                    Colors.white, // Set the border color here
+                                width: 2.0, // Set the border width
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                  50), // Apply a circular border radius
+                            ),
+                            child: Icon(
+                              Icons.phone,
+                              size: 15,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Text(
+                            "WhatsApp",
+                            style: TextStyle(color: Colors.white),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      height: 40,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        color: Colors.blue.shade800,
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 3,
+                            blurRadius: 10,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.share,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            "Share",
+                            style: TextStyle(color: Colors.white),
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Terms of use',
+                    style: TextStyle(fontSize: 14, color: Colors.black87),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    '1. Is not transferable to any other person. Ensure that their ID Cards are kept secured and are not delibrately or inadvertenatly made availabe for use by any other person.',
+                    style: TextStyle(fontSize: 10, color: Colors.black54),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    '2. Alternation, falsification, or misuse of the card is a violation and will be dealt with accordingly severe disciplinary action against him/her. Fraudulent use of the card may also result in criminal charges and/or civil proceedings as deemed fit.',
+                    style: TextStyle(fontSize: 10, color: Colors.black54),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    '3. Upon completion or cessation of agreement, one must no longer use the card for proof of his/her agent status for any purpose.',
+                    style: TextStyle(fontSize: 10, color: Colors.black54),
                   ),
                 ],
               ),
