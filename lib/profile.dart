@@ -104,49 +104,50 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                       final DocumentSnapshot documentSnapshot =
                                           streamSnapshot.data!.docs[index];
                                       return Container(
-                                        padding: EdgeInsets.only(top: 5),
-                                        height: 150,
+                                        padding: EdgeInsets.only(
+                                          top: 15,
+                                          left: 15,
+                                        ),
+                                        height: 100,
                                         width: double.infinity,
                                         color: const Color.fromARGB(
                                             255, 8, 71, 123),
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 20, top: 20),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Container(
-                                                    height: 100,
-                                                    width: 100,
-                                                    decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(50),
-                                                        color: Colors.white,
-                                                        boxShadow: [
-                                                          BoxShadow(
-                                                              color: const Color
-                                                                          .fromARGB(
-                                                                      255,
-                                                                      102,
-                                                                      100,
-                                                                      100)
-                                                                  .withOpacity(
-                                                                      0.2),
-                                                              spreadRadius: 1,
-                                                              blurRadius: 10)
-                                                        ],
-                                                        image: const DecorationImage(
-                                                            image: AssetImage(
-                                                                'assets/user.png'),
-                                                            fit: BoxFit.cover)),
-                                                  ),
-                                                  Column(
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  height: 70,
+                                                  width: 70,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              50),
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                            color: const Color
+                                                                        .fromARGB(
+                                                                    255,
+                                                                    102,
+                                                                    100,
+                                                                    100)
+                                                                .withOpacity(
+                                                                    0.2),
+                                                            spreadRadius: 1,
+                                                            blurRadius: 10)
+                                                      ],
+                                                      image: const DecorationImage(
+                                                          image: AssetImage(
+                                                              'assets/user.png'),
+                                                          fit: BoxFit.cover)),
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 20),
+                                                  child: Column(
                                                     crossAxisAlignment:
                                                         CrossAxisAlignment
                                                             .start,
@@ -161,7 +162,7 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                           documentSnapshot[
                                                               'name'],
                                                           style: TextStyle(
-                                                              fontSize: 17,
+                                                              fontSize: 16,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w600,
@@ -170,7 +171,7 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                         ),
                                                       ),
                                                       SizedBox(
-                                                        height: 4,
+                                                        height: 0,
                                                       ),
                                                       Padding(
                                                         padding:
@@ -180,7 +181,7 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                           documentSnapshot[
                                                               'email'],
                                                           style: TextStyle(
-                                                              fontSize: 14,
+                                                              fontSize: 12,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400,
@@ -191,7 +192,7 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                         ),
                                                       ),
                                                       SizedBox(
-                                                        height: 4,
+                                                        height: 0,
                                                       ),
                                                       Padding(
                                                         padding:
@@ -201,7 +202,7 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                           documentSnapshot[
                                                               'mobile_number'],
                                                           style: TextStyle(
-                                                              fontSize: 14,
+                                                              fontSize: 12,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400,
@@ -212,7 +213,7 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                         ),
                                                       ),
                                                       SizedBox(
-                                                        height: 4,
+                                                        height: 0,
                                                       ),
                                                       Padding(
                                                         padding:
@@ -222,7 +223,7 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                           documentSnapshot[
                                                               'Area'],
                                                           style: TextStyle(
-                                                              fontSize: 14,
+                                                              fontSize: 12,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400,
@@ -234,10 +235,10 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                       ),
                                                     ],
                                                   ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
                                         ),
                                       );
                                     });
@@ -247,7 +248,7 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                         Column(
                           children: [
                             SizedBox(
-                              height: MediaQuery.of(context).size.height / 1.5,
+                              height: MediaQuery.of(context).size.height - 196,
                               child: StreamBuilder(
                                   stream: chat
                                       .doc(widget.ids)
@@ -263,7 +264,8 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                       return ListView.builder(
                                           itemCount:
                                               streamSnapshot.data!.docs.length,
-                                          physics: ScrollPhysics(),
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
                                           itemBuilder: (BuildContext context,
                                               int index) {
                                             final DocumentSnapshot
@@ -276,488 +278,744 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                 height: MediaQuery.of(context)
                                                         .size
                                                         .height /
-                                                    1,
+                                                    1.05,
                                                 width: double.infinity,
                                                 color: Colors.white,
-                                                child: Column(
-                                                  //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              top: 10,
-                                                              left: 20,
-                                                              right: 20),
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(5),
+                                                  child: Column(
+                                                    //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Card(
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  top: 5,
+                                                                  left: 20,
+                                                                  right: 20,
+                                                                  bottom: 5),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
                                                             children: [
-                                                              Text(
-                                                                'Welcome',
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        15,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black
-                                                                        .withOpacity(
-                                                                            0.6)),
+                                                              Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    'Welcome',
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            14,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w400,
+                                                                        color: Colors
+                                                                            .black
+                                                                            .withOpacity(0.6)),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height: 2,
+                                                                  ),
+                                                                  Text(
+                                                                    'Pal credits',
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            14,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w600,
+                                                                        color: Colors
+                                                                            .black),
+                                                                  ),
+                                                                ],
                                                               ),
-                                                              const SizedBox(
-                                                                height: 2,
-                                                              ),
-                                                              Text(
-                                                                'Pal credits',
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        17,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    color: Colors
-                                                                        .black),
+                                                              Column(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    'Date',
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            14,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w400,
+                                                                        color: Colors
+                                                                            .black
+                                                                            .withOpacity(0.6)),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height: 2,
+                                                                  ),
+                                                                  Text(
+                                                                    documentSnapshot[
+                                                                        'date'],
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            14,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w600,
+                                                                        color: Colors
+                                                                            .black),
+                                                                  ),
+                                                                ],
                                                               ),
                                                             ],
                                                           ),
-                                                          Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                'Date',
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        15,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: Colors
-                                                                        .black
-                                                                        .withOpacity(
-                                                                            0.6)),
-                                                              ),
-                                                              const SizedBox(
-                                                                height: 2,
-                                                              ),
-                                                              Text(
-                                                                documentSnapshot[
-                                                                    'date'],
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        17,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    color: Colors
-                                                                        .black),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
+                                                        ),
                                                       ),
-                                                    ),
-                                                    const SizedBox(
-                                                      height: 10,
-                                                    ),
-                                                    Divider(
-                                                      height: 0,
-                                                    ),
-                                                    ExpansionTile(
-                                                      leading: Icon(Icons
-                                                          .online_prediction),
-                                                      title: Text(
-                                                        'Today Status',
-                                                        style: TextStyle(
-                                                            fontSize: 15,
-                                                            color:
-                                                                Colors.black),
-                                                      ),
-                                                      children: [
-                                                        Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceAround,
-                                                          children: [
-                                                            Column(
-                                                              children: [
-                                                                Text(
-                                                                  'Check In',
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          17,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400,
-                                                                      color: Colors
-                                                                          .black
-                                                                          .withOpacity(
-                                                                              0.6)),
-                                                                ),
-                                                                const SizedBox(
-                                                                  height: 5,
-                                                                ),
-                                                                Text(
-                                                                  documentSnapshot[
-                                                                      'checkin_time'],
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          17,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                      color: Colors
-                                                                          .black),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Column(
-                                                              children: [
-                                                                Text(
-                                                                  'Check Out',
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          17,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400,
-                                                                      color: Colors
-                                                                          .black
-                                                                          .withOpacity(
-                                                                              0.6)),
-                                                                ),
-                                                                const SizedBox(
-                                                                  height: 5,
-                                                                ),
-                                                                documentSnapshot[
-                                                                            'checkout_time'] ==
-                                                                        '23:50'
-                                                                    ? Text(
-                                                                        '--/--',
-                                                                        style: TextStyle(
-                                                                            fontSize:
-                                                                                17,
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                            color: Colors.black),
-                                                                      )
-                                                                    : Text(
-                                                                        documentSnapshot[
-                                                                            'checkout_time'],
-                                                                        style: TextStyle(
-                                                                            fontSize:
-                                                                                17,
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                            color: Colors.black),
-                                                                      ),
-                                                              ],
+
+                                                      Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.grey
+                                                                  .withOpacity(
+                                                                      0.3),
+                                                              blurRadius: 4,
                                                             ),
                                                           ],
                                                         ),
-                                                        SizedBox(
-                                                          height: 15,
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Divider(
-                                                      height: 0,
-                                                    ),
-
-                                                    Container(
-                                                      height: 52,
-                                                      child: ListTile(
-                                                        leading:
-                                                            Icon(Icons.mail),
-                                                        title: Text(
-                                                            "Offer Letter"),
-                                                        onTap: () {
-                                                          Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  OfferLetter(),
+                                                        child: ExpansionTile(
+                                                          title: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    bottom: 10),
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons
+                                                                      .online_prediction,
+                                                                  size: 18,
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 40,
+                                                                ),
+                                                                Text(
+                                                                    "Today Attendance"),
+                                                              ],
                                                             ),
-                                                          );
-                                                        },
-                                                      ),
-                                                    ),
-                                                    Divider(),
-
-                                                    Container(
-                                                      height: 45,
-                                                      child: ListTile(
-                                                        leading: Icon(Icons
-                                                            .card_giftcard),
-                                                        title: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  bottom: 14),
-                                                          child: Text(
-                                                              "Visiting Card"),
-                                                        ),
-                                                        onTap: () {
-                                                          Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  VisitingCard(),
+                                                          ),
+                                                          children: [
+                                                            Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceAround,
+                                                              children: [
+                                                                Column(
+                                                                  children: [
+                                                                    Text(
+                                                                      'Check In',
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              17,
+                                                                          fontWeight: FontWeight
+                                                                              .w400,
+                                                                          color: Colors
+                                                                              .black
+                                                                              .withOpacity(0.6)),
+                                                                    ),
+                                                                    const SizedBox(
+                                                                      height: 5,
+                                                                    ),
+                                                                    Text(
+                                                                      documentSnapshot[
+                                                                          'checkin_time'],
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              17,
+                                                                          fontWeight: FontWeight
+                                                                              .w600,
+                                                                          color:
+                                                                              Colors.black),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Column(
+                                                                  children: [
+                                                                    Text(
+                                                                      'Check Out',
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              17,
+                                                                          fontWeight: FontWeight
+                                                                              .w400,
+                                                                          color: Colors
+                                                                              .black
+                                                                              .withOpacity(0.6)),
+                                                                    ),
+                                                                    const SizedBox(
+                                                                      height: 5,
+                                                                    ),
+                                                                    documentSnapshot['checkout_time'] ==
+                                                                            '23:50'
+                                                                        ? Text(
+                                                                            '--/--',
+                                                                            style: TextStyle(
+                                                                                fontSize: 17,
+                                                                                fontWeight: FontWeight.w600,
+                                                                                color: Colors.black),
+                                                                          )
+                                                                        : Text(
+                                                                            documentSnapshot['checkout_time'],
+                                                                            style: TextStyle(
+                                                                                fontSize: 17,
+                                                                                fontWeight: FontWeight.w600,
+                                                                                color: Colors.black),
+                                                                          ),
+                                                                  ],
+                                                                ),
+                                                              ],
                                                             ),
-                                                          );
-                                                        },
-                                                      ),
-                                                    ),
-                                                    Divider(),
-                                                    Container(
-                                                      height: 45,
-                                                      child: ListTile(
-                                                        leading:
-                                                            Icon(Icons.wallet),
-                                                        title: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  bottom: 14),
-                                                          child: Text("Wallet"),
+                                                            SizedBox(
+                                                              height: 15,
+                                                            ),
+                                                          ],
                                                         ),
-                                                        onTap: () {
-                                                          Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
+                                                      ),
+                                                      SizedBox(
+                                                        height: 4,
+                                                      ),
+                                                      Container(
+                                                        height: 45,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.grey
+                                                                  .withOpacity(
+                                                                      0.3),
+                                                              blurRadius: 4,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        child: ListTile(
+                                                          title: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    bottom: 10),
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.mail,
+                                                                  size: 18,
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 40,
+                                                                ),
+                                                                Text(
+                                                                    "Offer Letter"),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          onTap: () {
+                                                            Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
                                                                 builder:
                                                                     (context) =>
-                                                                        Wallet(
-                                                                          ids:
-                                                                              localtoken,
-                                                                        )),
-                                                          );
-                                                        },
-                                                      ),
-                                                    ),
-                                                    Divider(),
-                                                    Container(
-                                                      height: 45,
-                                                      child: ListTile(
-                                                        leading: Icon(
-                                                            Icons.location_on),
-                                                        title: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  bottom: 14),
-                                                          child:
-                                                              Text("Addresses"),
+                                                                        OfferLetter(),
+                                                              ),
+                                                            );
+                                                          },
                                                         ),
-                                                        onTap: () {},
                                                       ),
-                                                    ),
-                                                    Divider(),
-                                                    Container(
-                                                      height: 45,
-                                                      child: ListTile(
-                                                        leading: Icon(
-                                                            Icons.contacts),
-                                                        title: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  bottom: 14),
-                                                          child: Text(
-                                                              "Contact Details"),
-                                                        ),
-                                                        onTap: () {},
+                                                      SizedBox(
+                                                        height: 4,
                                                       ),
-                                                    ),
-                                                    Divider(),
-                                                    Container(
-                                                      height: 45,
-                                                      child: ListTile(
-                                                        leading:
-                                                            Icon(Icons.details),
-                                                        title: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  bottom: 14),
-                                                          child: Text(
-                                                              "Bank Details"),
+                                                      Container(
+                                                        height: 45,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.grey
+                                                                  .withOpacity(
+                                                                      0.3),
+                                                              blurRadius: 4,
+                                                            ),
+                                                          ],
                                                         ),
-                                                        onTap: () {},
-                                                      ),
-                                                    ),
-
-                                                    Divider(),
-                                                    Container(
-                                                      height: 45,
-                                                      child: ListTile(
-                                                        leading:
-                                                            Icon(Icons.help),
-                                                        title: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  bottom: 14),
-                                                          child: Text("Help"),
-                                                        ),
-                                                        onTap: () {},
-                                                      ),
-                                                    ),
-                                                    Divider(),
-                                                    Container(
-                                                      height: 45,
-                                                      child: ListTile(
-                                                        leading: Icon(
-                                                            Icons.privacy_tip),
-                                                        title: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  bottom: 14),
-                                                          child: Text(
-                                                              "Privacy Policy"),
-                                                        ),
-                                                        onTap: () {},
-                                                      ),
-                                                    ),
-
-                                                    Divider(),
-                                                    Container(
-                                                      height: 45,
-                                                      child: ListTile(
-                                                        leading:
-                                                            Icon(Icons.person),
-                                                        title: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  bottom: 14),
-                                                          child: Text(
-                                                              "Attendence"),
-                                                        ),
-                                                        onTap: () {},
-                                                      ),
-                                                    ),
-                                                    Divider(),
-                                                    Container(
-                                                      height: 45,
-                                                      child: ListTile(
-                                                        leading:
-                                                            Icon(Icons.logout),
-                                                        title: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  bottom: 14),
-                                                          child: Text("Logout"),
-                                                        ),
-                                                        onTap: () {
-                                                          storage.delete(
-                                                              key: 'token');
-                                                          Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
+                                                        child: ListTile(
+                                                          title: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    bottom: 10),
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons
+                                                                      .card_giftcard,
+                                                                  size: 18,
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 40,
+                                                                ),
+                                                                Text(
+                                                                  "Visiting Card",
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          onTap: () {
+                                                            Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
                                                                 builder:
                                                                     (context) =>
-                                                                        MyApp()),
-                                                          );
-                                                        },
+                                                                        VisitingCard(),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Divider(),
+                                                      SizedBox(
+                                                        height: 4,
+                                                      ),
+                                                      Container(
+                                                        height: 45,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.grey
+                                                                  .withOpacity(
+                                                                      0.3),
+                                                              blurRadius: 4,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        child: ListTile(
+                                                          title: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    bottom: 10),
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.wallet,
+                                                                  size: 18,
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 40,
+                                                                ),
+                                                                Text("Wallet"),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          onTap: () {
+                                                            Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          Wallet(
+                                                                            ids:
+                                                                                localtoken,
+                                                                          )),
+                                                            );
+                                                          },
+                                                        ),
+                                                      ),
 
-                                                    //Spacer(),
-                                                    // Padding(
-                                                    //   padding:
-                                                    //       const EdgeInsets
-                                                    //               .symmetric(
-                                                    //           horizontal: 0,
-                                                    //           vertical: 20),
-                                                    //   child: Container(
-                                                    //     decoration:
-                                                    //         BoxDecoration(
-                                                    //       borderRadius:
-                                                    //           BorderRadius
-                                                    //               .circular(
-                                                    //                   12),
-                                                    //       gradient: const LinearGradient(
-                                                    //           colors: [
-                                                    //             Colors.blue,
-                                                    //             Color
-                                                    //                 .fromARGB(
-                                                    //                     255,
-                                                    //                     8,
-                                                    //                     71,
-                                                    //                     123)
-                                                    //           ],
-                                                    //           begin: Alignment
-                                                    //               .bottomLeft,
-                                                    //           end: Alignment
-                                                    //               .topRight),
-                                                    //     ),
-                                                    //     child:
-                                                    //         MaterialButton(
-                                                    //       onPressed: () {
-                                                    //         updateattendance(
-                                                    //             documentSnapshot
-                                                    //                 .id);
-                                                    //         storage.delete(
-                                                    //             key:
-                                                    //                 'token');
-                                                    //         Navigator.push(
-                                                    //           context,
-                                                    //           MaterialPageRoute(
-                                                    //             builder:
-                                                    //                 (context) =>
-                                                    //                     MyApp(),
-                                                    //           ),
-                                                    //         );
-                                                    //       },
-                                                    //       height: 30,
-                                                    //       shape: RoundedRectangleBorder(
-                                                    //           borderRadius:
-                                                    //               BorderRadius
-                                                    //                   .circular(
-                                                    //                       7)),
-                                                    //       child: Padding(
-                                                    //         padding: const EdgeInsets
-                                                    //                 .symmetric(
-                                                    //             horizontal:
-                                                    //                 30,
-                                                    //             vertical:
-                                                    //                 5),
-                                                    //         child: Row(
-                                                    //           mainAxisAlignment:
-                                                    //               MainAxisAlignment
-                                                    //                   .center,
-                                                    //           children: const [
-                                                    //             Text(
-                                                    //               'Click here to Check Out',
-                                                    //               style: TextStyle(
-                                                    //                   fontSize:
-                                                    //                       14,
-                                                    //                   fontWeight: FontWeight
-                                                    //                       .w500,
-                                                    //                   color:
-                                                    //                       Colors.white),
-                                                    //             ),
-                                                    //           ],
-                                                    //         ),
-                                                    //       ),
-                                                    //     ),
-                                                    //   ),
-                                                    // ),
-                                                  ],
+                                                      SizedBox(
+                                                        height: 4,
+                                                      ),
+                                                      Container(
+                                                        height: 45,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.grey
+                                                                  .withOpacity(
+                                                                      0.3),
+                                                              blurRadius: 4,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        child: ListTile(
+                                                          title: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    bottom: 10),
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.person,
+                                                                  size: 18,
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 40,
+                                                                ),
+                                                                Text(
+                                                                    "Attendence"),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          onTap: () {},
+                                                        ),
+                                                      ),
+
+                                                      SizedBox(
+                                                        height: 4,
+                                                      ),
+                                                      Container(
+                                                        height: 45,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.grey
+                                                                  .withOpacity(
+                                                                      0.3),
+                                                              blurRadius: 4,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        child: ListTile(
+                                                          title: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    bottom: 10),
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.details,
+                                                                  size: 18,
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 40,
+                                                                ),
+                                                                Text(
+                                                                    "Bank Details"),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          onTap: () {},
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 4,
+                                                      ),
+                                                      Container(
+                                                        height: 45,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.grey
+                                                                  .withOpacity(
+                                                                      0.3),
+                                                              blurRadius: 4,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        child: ListTile(
+                                                          title: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    bottom: 10),
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons
+                                                                      .location_on_sharp,
+                                                                  size: 18,
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 40,
+                                                                ),
+                                                                Text("Address"),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          onTap: () {},
+                                                        ),
+                                                      ),
+
+                                                      SizedBox(
+                                                        height: 4,
+                                                      ),
+                                                      Container(
+                                                        height: 45,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.grey
+                                                                  .withOpacity(
+                                                                      0.3),
+                                                              blurRadius: 4,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        child: ListTile(
+                                                          title: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    bottom: 10),
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.help,
+                                                                  size: 18,
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 40,
+                                                                ),
+                                                                Text("Help"),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          onTap: () {},
+                                                        ),
+                                                      ),
+
+                                                      SizedBox(
+                                                        height: 4,
+                                                      ),
+                                                      Container(
+                                                        height: 45,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.grey
+                                                                  .withOpacity(
+                                                                      0.3),
+                                                              blurRadius: 4,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        child: ListTile(
+                                                          title: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    bottom: 10),
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons
+                                                                      .privacy_tip,
+                                                                  size: 18,
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 40,
+                                                                ),
+                                                                Text(
+                                                                    "Privacy Policy"),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          onTap: () {},
+                                                        ),
+                                                      ),
+
+                                                      SizedBox(
+                                                        height: 4,
+                                                      ),
+                                                      Container(
+                                                        height: 45,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.grey
+                                                                  .withOpacity(
+                                                                      0.3),
+                                                              blurRadius: 4,
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        child: ListTile(
+                                                          title: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    bottom: 10),
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.logout,
+                                                                  size: 18,
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 40,
+                                                                ),
+                                                                Text("Logout"),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          onTap: () {
+                                                            storage.delete(
+                                                                key: 'token');
+                                                            Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          MyApp()),
+                                                            );
+                                                          },
+                                                        ),
+                                                      ),
+
+                                                      //Spacer(),
+                                                      // Padding(
+                                                      //   padding:
+                                                      //       const EdgeInsets
+                                                      //               .symmetric(
+                                                      //           horizontal: 0,
+                                                      //           vertical: 20),
+                                                      //
+                                                      // Container(
+                                                      //     decoration:
+                                                      //         BoxDecoration(
+                                                      //       borderRadius:
+                                                      //           BorderRadius
+                                                      //               .circular(
+                                                      //                   12),
+                                                      //       gradient: const LinearGradient(
+                                                      //           colors: [
+                                                      //             Colors.blue,
+                                                      //             Color
+                                                      //                 .fromARGB(
+                                                      //                     255,
+                                                      //                     8,
+                                                      //                     71,
+                                                      //                     123)
+                                                      //           ],
+                                                      //           begin: Alignment
+                                                      //               .bottomLeft,
+                                                      //           end: Alignment
+                                                      //               .topRight),
+                                                      //     ),
+                                                      //     child:
+                                                      //         MaterialButton(
+                                                      //       onPressed: () {
+                                                      //         updateattendance(
+                                                      //             documentSnapshot
+                                                      //                 .id);
+                                                      //         storage.delete(
+                                                      //             key:
+                                                      //                 'token');
+                                                      //         Navigator.push(
+                                                      //           context,
+                                                      //           MaterialPageRoute(
+                                                      //             builder:
+                                                      //                 (context) =>
+                                                      //                     MyApp(),
+                                                      //           ),
+                                                      //         );
+                                                      //       },
+                                                      //       height: 30,
+                                                      //       shape: RoundedRectangleBorder(
+                                                      //           borderRadius:
+                                                      //               BorderRadius
+                                                      //                   .circular(
+                                                      //                       7)),
+                                                      //       child: Padding(
+                                                      //         padding: const EdgeInsets
+                                                      //                 .symmetric(
+                                                      //             horizontal:
+                                                      //                 30,
+                                                      //             vertical:
+                                                      //                 5),
+                                                      //         child: Row(
+                                                      //           mainAxisAlignment:
+                                                      //               MainAxisAlignment
+                                                      //                   .center,
+                                                      //           children: const [
+                                                      //             Text(
+                                                      //               'Click here to Check Out',
+                                                      //               style: TextStyle(
+                                                      //                   fontSize:
+                                                      //                       14,
+                                                      //                   fontWeight: FontWeight
+                                                      //                       .w500,
+                                                      //                   color:
+                                                      //                       Colors.white),
+                                                      //             ),
+                                                      //           ],
+                                                      //         ),
+                                                      //       ),
+                                                      //     ),
+                                                      //   ),
+                                                      // ),
+                                                    ],
+                                                  ),
                                                 ),
                                               );
                                             } else {

@@ -17,14 +17,14 @@ class _OfferLetterState extends State<OfferLetter> {
             Navigator.pop(context);
           },
           icon: Icon(Icons.arrow_back),
-          color: Colors.black,
+          color: Colors.white,
           splashRadius: 24,
         ),
         title: Text(
           "Offer Letter",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.grey.shade200,
+        backgroundColor: Color.fromARGB(255, 8, 71, 123),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 50),

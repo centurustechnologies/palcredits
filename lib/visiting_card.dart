@@ -13,18 +13,18 @@ class _VisitingCardState extends State<VisitingCard> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.grey.shade200,
+        backgroundColor: Color.fromARGB(255, 8, 71, 123),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
           icon: Icon(Icons.arrow_back),
-          color: Colors.black,
+          color: Colors.white,
           splashRadius: 24,
         ),
         title: Text(
           "Visiting Card",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: Padding(
