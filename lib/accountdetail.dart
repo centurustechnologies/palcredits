@@ -177,40 +177,40 @@ class _AccountDetailState extends State<AccountDetail> {
             child: Container(
               height: MediaQuery.of(context).size.height - 176,
               child: ListView(
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 children: [
                   const SizedBox(
                     height: 20,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20, bottom: 20),
-                    child: Text(
-                      'Personal Informations',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black.withOpacity(0.9)),
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Center(
+                      child: Text(
+                        'Personal Informations',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black.withOpacity(0.9)),
+                      ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 29),
-                    child: Row(
-                      children: [
-                        Text(
-                          "Title",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.blue),
-                        ),
-                        const Text(
-                          '*',
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.red),
-                        ),
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        "Title",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.blue),
+                      ),
+                      const Text(
+                        '*',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.red),
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 40,
@@ -255,47 +255,34 @@ class _AccountDetailState extends State<AccountDetail> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30, bottom: 15),
-                    child: Row(
-                      children: [
-                        Text(
-                          "Name",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.blue),
-                        ),
-                        const Text(
-                          '*',
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.red),
-                        ),
-                      ],
-                    ),
-                  ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 26),
-                        child: Container(
+                      Text(
+                        "Name",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.blue),
+                      ),
+                      const Text(
+                        '*',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.red),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
                           height: 35,
-                          width: 140,
-                          // decoration: BoxDecoration(
-                          //     borderRadius: BorderRadius.circular(5),
-                          //     color: Colors.white,
-                          //     boxShadow: [
-                          //       BoxShadow(
-                          //           color: const Color.fromARGB(255, 102, 100, 100)
-                          //               .withOpacity(0.2),
-                          //           spreadRadius: 1,
-                          //           blurRadius: 1)
-                          //     ]),
+                          width: 120,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 15, bottom: 6),
+                            padding: const EdgeInsets.only(left: 0, bottom: 6),
                             child: TextField(
                               controller: firstnameController,
                               decoration: const InputDecoration(
@@ -307,24 +294,14 @@ class _AccountDetailState extends State<AccountDetail> {
                             ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 35),
-                        child: Container(
+                        SizedBox(
+                          width: 28,
+                        ),
+                        Container(
                           height: 35,
-                          width: 140,
-                          // decoration: BoxDecoration(
-                          //     borderRadius: BorderRadius.circular(5),
-                          //     color: Colors.white,
-                          //     boxShadow: [
-                          //       BoxShadow(
-                          //           color: const Color.fromARGB(255, 102, 100, 100)
-                          //               .withOpacity(0.2),
-                          //           spreadRadius: 1,
-                          //           blurRadius: 1)
-                          //     ]),
+                          width: 120,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 15, bottom: 6),
+                            padding: const EdgeInsets.only(left: 0, bottom: 6),
                             child: TextField(
                               controller: lastnameController,
                               decoration: const InputDecoration(
@@ -336,32 +313,29 @@ class _AccountDetailState extends State<AccountDetail> {
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 16,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 31),
-                    child: Row(
-                      children: [
-                        Text(
-                          "Marital Status",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.blue),
-                        ),
-                        const Text(
-                          '*',
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.red),
-                        ),
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        "Marital Status",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.blue),
+                      ),
+                      const Text(
+                        '*',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.red),
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 40,
@@ -405,53 +379,47 @@ class _AccountDetailState extends State<AccountDetail> {
                     height: 16,
                   ),
                   //info('Date Of Birth', 'Enter', dobController),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 28),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Row(
-                            children: [
-                              Text(
-                                'Pick DOB',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.blue),
-                              ),
-                              const Text(
-                                '*',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.red),
-                              ),
-                            ],
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Pick DOB',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.blue),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15, bottom: 20),
-                          child: TextField(
-                            controller: dobController,
-                            decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                icon: Icon(Icons.calendar_month),
-                                onPressed: () {
-                                  _selectDate(context);
-                                },
-                              ),
-                              hintText: '--/--/--',
-                              labelText: 'Select Dob',
-                              hintStyle: const TextStyle(
-                                  color: Colors.grey, fontSize: 14),
+                          const Text(
+                            '*',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.red),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15, bottom: 20),
+                        child: TextField(
+                          controller: dobController,
+                          decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                              icon: Icon(Icons.calendar_month),
+                              onPressed: () {
+                                _selectDate(context);
+                              },
                             ),
+                            hintText: '--/--/----',
+                            labelText: 'Select Dob',
+                            hintStyle: const TextStyle(
+                                color: Colors.grey, fontSize: 14),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                   info(
                       'Mother Name',
@@ -461,7 +429,7 @@ class _AccountDetailState extends State<AccountDetail> {
                       [LengthLimitingTextInputFormatter(30)]),
                   info(
                       'Email',
-                      'Enter',
+                      'Enter Email',
                       emailController,
                       TextInputType.emailAddress,
                       [LengthLimitingTextInputFormatter(30)]),
@@ -509,26 +477,23 @@ class _AccountDetailState extends State<AccountDetail> {
                   ),
                   Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 38),
-                        child: Row(
-                          children: [
-                            Text(
-                              "Location",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.blue),
-                            ),
-                            const Text(
-                              '*',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.red),
-                            ),
-                          ],
-                        ),
+                      Row(
+                        children: [
+                          Text(
+                            "Location",
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.blue),
+                          ),
+                          const Text(
+                            '*',
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.red),
+                          ),
+                        ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -537,7 +502,7 @@ class _AccountDetailState extends State<AccountDetail> {
                             padding: const EdgeInsets.only(left: 30),
                             child: Container(
                               height: 60,
-                              width: 140,
+                              width: 130,
                               // decoration: BoxDecoration(
                               //     borderRadius: BorderRadius.circular(5),
                               //     color: Colors.white,
@@ -556,37 +521,38 @@ class _AccountDetailState extends State<AccountDetail> {
                                   decoration: const InputDecoration(
                                     // border: InputBorder.none,
                                     labelText: "State",
+                                    hintText: "Enter Your State",
                                     hintStyle: TextStyle(
-                                        color: Colors.grey, fontSize: 14),
+                                        color: Colors.grey, fontSize: 12),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 35),
-                            child: Container(
-                              height: 60,
-                              width: 140,
-                              // decoration: BoxDecoration(
-                              //     borderRadius: BorderRadius.circular(5),
-                              //     color: Colors.white,
-                              //     boxShadow: [
-                              //       BoxShadow(
-                              //           color: const Color.fromARGB(255, 102, 100, 100)
-                              //               .withOpacity(0.2),
-                              //           spreadRadius: 1,
-                              //           blurRadius: 1)
-                              //     ]),
-                              child: const Padding(
-                                padding: EdgeInsets.only(left: 15, bottom: 10),
-                                child: TextField(
-                                  //controller: placeofbirthController,
+                          Container(
+                            height: 60,
+                            width: 130,
+                            // decoration: BoxDecoration(
+                            //     borderRadius: BorderRadius.circular(5),
+                            //     color: Colors.white,
+                            //     boxShadow: [
+                            //       BoxShadow(
+                            //           color: const Color.fromARGB(255, 102, 100, 100)
+                            //               .withOpacity(0.2),
+                            //           spreadRadius: 1,
+                            //           blurRadius: 1)
+                            //     ]),
+                            child: const Padding(
+                              padding: EdgeInsets.only(left: 15, bottom: 10),
+                              child: TextField(
+                                //controller: placeofbirthController,
 
-                                  decoration: InputDecoration(
-                                    // border: InputBorder.none,
-                                    labelText: "Country",
-                                  ),
+                                decoration: InputDecoration(
+                                  // border: InputBorder.none,
+                                  labelText: "Country",
+                                  hintText: "Enter Your Country",
+                                  hintStyle: TextStyle(
+                                      color: Colors.grey, fontSize: 12),
                                 ),
                               ),
                             ),
@@ -599,75 +565,69 @@ class _AccountDetailState extends State<AccountDetail> {
                     height: 25,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20, bottom: 20),
-                    child: Text(
-                      'Financial Informations',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black.withOpacity(0.9)),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25),
-                    child: Row(
-                      children: [
-                        Text(
-                          "Are You a",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.blue),
-                        ),
-                        const Text(
-                          '*',
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.red),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 9),
-                      child: DropdownButtonFormField<String>(
-                        decoration: InputDecoration(
-                          hintText:
-                              'Source of income', // You can change this label as needed
-                          labelStyle: TextStyle(
-                            fontSize: 14,
-                            color: Colors.grey.withOpacity(0.8),
-                          ),
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors
-                                    .grey), // Customize the color as needed
-                          ),
-                        ),
-                        items: items1
-                            .map((item) => DropdownMenuItem<String>(
-                                  value: item,
-                                  child: Text(
-                                    item,
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ))
-                            .toList(),
-                        value: selectedValue1,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedValue1 = value!;
-                          });
-                        },
+                    padding: const EdgeInsets.only(bottom: 20),
+                    child: Center(
+                      child: Text(
+                        'Financial Informations',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black.withOpacity(0.9)),
                       ),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "Are You a",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.blue),
+                      ),
+                      const Text(
+                        '*',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.red),
+                      ),
+                    ],
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: DropdownButtonFormField<String>(
+                      decoration: InputDecoration(
+                        hintText:
+                            'Source of income', // You can change this label as needed
+                        labelStyle: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey.withOpacity(0.8),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                              color:
+                                  Colors.grey), // Customize the color as needed
+                        ),
+                      ),
+                      items: items1
+                          .map((item) => DropdownMenuItem<String>(
+                                value: item,
+                                child: Text(
+                                  item,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ))
+                          .toList(),
+                      value: selectedValue1,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedValue1 = value!;
+                        });
+                      },
                     ),
                   ),
                   const SizedBox(
@@ -688,31 +648,25 @@ class _AccountDetailState extends State<AccountDetail> {
                       [LengthLimitingTextInputFormatter(30)]),
                   info(
                       'Office Adress',
-                      'Enter',
+                      'Enter address',
                       officeController,
                       TextInputType.emailAddress,
                       [LengthLimitingTextInputFormatter(50)]),
 
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, bottom: 5),
-                    child: Row(
-                      children: [
-                        Text(
-                          "Existing card holder",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        ),
-                        const Text(
-                          '',
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.red),
-                        ),
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        "Existing card holder",
+                        style: TextStyle(fontSize: 15, color: Colors.blue),
+                      ),
+                      const Text(
+                        '',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.red),
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 40,
@@ -820,7 +774,7 @@ class _AccountDetailState extends State<AccountDetail> {
         ],
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
         child: Container(
           height: 40,
           decoration: BoxDecoration(
@@ -952,50 +906,42 @@ class _AccountDetailState extends State<AccountDetail> {
   }
 
   info(name, name1, control, type, length) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 29),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Row(
-              children: [
-                Text(
-                  name,
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.blue),
-                ),
-                const Text(
-                  '*',
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.red),
-                ),
-              ],
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text(
+              name,
+              style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.blue),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15, bottom: 20),
-            child: TextField(
-              controller: control,
-              keyboardType: type,
-              //maxLength: length,
-              expands: false,
-              //maxLengthEnforcement: false,
+            const Text(
+              '*',
+              style: TextStyle(
+                  fontSize: 15, fontWeight: FontWeight.w400, color: Colors.red),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 15, bottom: 20),
+          child: TextField(
+            controller: control,
+            keyboardType: type,
+            //maxLength: length,
+            expands: false,
+            //maxLengthEnforcement: false,
 
-              decoration: InputDecoration(
-                hintText: name1,
-                hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
-              ),
+            decoration: InputDecoration(
+              hintText: name1,
+              hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

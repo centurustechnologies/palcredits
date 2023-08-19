@@ -104,14 +104,16 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                       final DocumentSnapshot documentSnapshot =
                                           streamSnapshot.data!.docs[index];
                                       return Container(
+                                        height: 100,
+                                        width: double.infinity,
                                         padding: EdgeInsets.only(
                                           top: 15,
                                           left: 15,
                                         ),
-                                        height: 100,
-                                        width: double.infinity,
-                                        color: const Color.fromARGB(
-                                            255, 8, 71, 123),
+                                        decoration: BoxDecoration(
+                                          color: const Color.fromARGB(
+                                              255, 8, 71, 123),
+                                        ),
                                         child: Column(
                                           children: [
                                             Row(
@@ -290,12 +292,34 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                         CrossAxisAlignment
                                                             .start,
                                                     children: [
-                                                      Card(
+                                                      Container(
+                                                        height: 55,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.grey
+                                                                  .withOpacity(
+                                                                      0.3), // Color of the shadow
+                                                              spreadRadius:
+                                                                  2, // Spread radius
+                                                              blurRadius:
+                                                                  7, // Blur radius
+                                                              offset: Offset(0,
+                                                                  -4), // Offset from top-left corner
+                                                            ),
+                                                          ],
+                                                        ),
                                                         child: Padding(
                                                           padding:
                                                               const EdgeInsets
                                                                       .only(
-                                                                  top: 5,
+                                                                  top: 10,
                                                                   left: 20,
                                                                   right: 20,
                                                                   bottom: 5),
@@ -375,7 +399,9 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                           ),
                                                         ),
                                                       ),
-
+                                                      SizedBox(
+                                                        height: 4,
+                                                      ),
                                                       Container(
                                                         decoration:
                                                             BoxDecoration(
@@ -393,100 +419,86 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                             ),
                                                           ],
                                                         ),
-                                                        child: ExpansionTile(
-                                                          title: Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                        .only(
-                                                                    bottom: 10),
-                                                            child: Row(
+                                                        child: Column(
+                                                          children: [
+                                                            ExpansionTile(
+                                                              expandedAlignment:
+                                                                  Alignment
+                                                                      .center,
+                                                              title: Row(
+                                                                children: [
+                                                                  Icon(
+                                                                    Icons
+                                                                        .online_prediction,
+                                                                    size: 18,
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: 40,
+                                                                  ),
+                                                                  Text(
+                                                                      "Today Attendance"),
+                                                                ],
+                                                              ),
                                                               children: [
-                                                                Icon(
-                                                                  Icons
-                                                                      .online_prediction,
-                                                                  size: 18,
+                                                                Row(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceAround,
+                                                                  children: [
+                                                                    Column(
+                                                                      children: [
+                                                                        Text(
+                                                                          'Check In',
+                                                                          style: TextStyle(
+                                                                              fontSize: 17,
+                                                                              fontWeight: FontWeight.w400,
+                                                                              color: Colors.black.withOpacity(0.6)),
+                                                                        ),
+                                                                        const SizedBox(
+                                                                          height:
+                                                                              5,
+                                                                        ),
+                                                                        Text(
+                                                                          documentSnapshot[
+                                                                              'checkin_time'],
+                                                                          style: TextStyle(
+                                                                              fontSize: 17,
+                                                                              fontWeight: FontWeight.w600,
+                                                                              color: Colors.black),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    Column(
+                                                                      children: [
+                                                                        Text(
+                                                                          'Check Out',
+                                                                          style: TextStyle(
+                                                                              fontSize: 17,
+                                                                              fontWeight: FontWeight.w400,
+                                                                              color: Colors.black.withOpacity(0.6)),
+                                                                        ),
+                                                                        const SizedBox(
+                                                                          height:
+                                                                              5,
+                                                                        ),
+                                                                        documentSnapshot['checkout_time'] ==
+                                                                                '23:50'
+                                                                            ? Text(
+                                                                                '--/--',
+                                                                                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600, color: Colors.black),
+                                                                              )
+                                                                            : Text(
+                                                                                documentSnapshot['checkout_time'],
+                                                                                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600, color: Colors.black),
+                                                                              ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
                                                                 ),
                                                                 SizedBox(
-                                                                  width: 40,
-                                                                ),
-                                                                Text(
-                                                                    "Today Attendance"),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          children: [
-                                                            Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceAround,
-                                                              children: [
-                                                                Column(
-                                                                  children: [
-                                                                    Text(
-                                                                      'Check In',
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                              17,
-                                                                          fontWeight: FontWeight
-                                                                              .w400,
-                                                                          color: Colors
-                                                                              .black
-                                                                              .withOpacity(0.6)),
-                                                                    ),
-                                                                    const SizedBox(
-                                                                      height: 5,
-                                                                    ),
-                                                                    Text(
-                                                                      documentSnapshot[
-                                                                          'checkin_time'],
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                              17,
-                                                                          fontWeight: FontWeight
-                                                                              .w600,
-                                                                          color:
-                                                                              Colors.black),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                Column(
-                                                                  children: [
-                                                                    Text(
-                                                                      'Check Out',
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                              17,
-                                                                          fontWeight: FontWeight
-                                                                              .w400,
-                                                                          color: Colors
-                                                                              .black
-                                                                              .withOpacity(0.6)),
-                                                                    ),
-                                                                    const SizedBox(
-                                                                      height: 5,
-                                                                    ),
-                                                                    documentSnapshot['checkout_time'] ==
-                                                                            '23:50'
-                                                                        ? Text(
-                                                                            '--/--',
-                                                                            style: TextStyle(
-                                                                                fontSize: 17,
-                                                                                fontWeight: FontWeight.w600,
-                                                                                color: Colors.black),
-                                                                          )
-                                                                        : Text(
-                                                                            documentSnapshot['checkout_time'],
-                                                                            style: TextStyle(
-                                                                                fontSize: 17,
-                                                                                fontWeight: FontWeight.w600,
-                                                                                color: Colors.black),
-                                                                          ),
-                                                                  ],
+                                                                  height: 15,
                                                                 ),
                                                               ],
-                                                            ),
-                                                            SizedBox(
-                                                              height: 15,
                                                             ),
                                                           ],
                                                         ),
@@ -894,8 +906,13 @@ class _ProfileState extends State<Profile> with WidgetsBindingObserver {
                                                             BoxShadow(
                                                               color: Colors.grey
                                                                   .withOpacity(
-                                                                      0.3),
-                                                              blurRadius: 4,
+                                                                      0.3), // Color of the shadow
+                                                              spreadRadius:
+                                                                  2, // Spread radius
+                                                              blurRadius:
+                                                                  4, // Blur radius
+                                                              offset: Offset(0,
+                                                                  2), // Offset from top-left corner
                                                             ),
                                                           ],
                                                         ),
